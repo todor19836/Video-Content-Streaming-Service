@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace VideoStreaming.Web.Models
+namespace Video_Content_Streaming_Service.Models
 {
-    public class ApplicationUser : IdentityUser
+    public class ApplicationUser : IdentityUser<int>
     {
+        public virtual ICollection<Video> Videos { get; set; } = new List<Video>();
     }
 }

@@ -1,22 +1,20 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace VideoStreaming.Web.Models
+namespace Video_Content_Streaming_Service.Models
 {
     public class Comment
     {
-        public int CommentId { get; set; }
+        public int Id { get; set; }
 
         [Required]
-        public string Content { get; set; }
+        public string Content { get; set; } = string.Empty;
 
-        public DateTime CommentDate { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         public int VideoId { get; set; }
+        public virtual Video Video { get; set; } = default!;
 
-        public Video Video { get; set; }
-
-        public string UserId { get; set; }
-
-        public ApplicationUser User { get; set; }
+        public int UserId { get; set; }
+        public virtual ApplicationUser User { get; set; } = default!;
     }
 }

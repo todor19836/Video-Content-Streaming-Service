@@ -1,4 +1,6 @@
-﻿namespace VideoStreaming.Web.Models
+﻿using System;
+
+namespace Video_Content_Streaming_Service.Models
 {
     public class Subscription
     {

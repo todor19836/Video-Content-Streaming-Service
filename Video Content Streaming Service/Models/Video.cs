@@ -1,24 +1,24 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace VideoStreaming.Web.Models
+namespace Video_Content_Streaming_Service.Models
 {
     public class Video
     {
-        public int VideoId { get; set; }
+        public int Id { get; set; }
 
         [Required]
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
-        public string Description { get; set; }
+        public string Description { get; set; } = string.Empty;
+
+        public string FilePath { get; set; } = string.Empty;
 
         public DateTime UploadDate { get; set; }
 
-        public int Duration { get; set; }
+        public int UploaderId { get; set; }
 
-        public int Views { get; set; }
+        public virtual ApplicationUser Uploader { get; set; } = default!;
 
-        public string UploaderId { get; set; }
-
-        public ApplicationUser Uploader { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
     }
 }

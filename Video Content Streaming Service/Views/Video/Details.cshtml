@@ -1,6 +1,45 @@
-﻿namespace Video_Content_Streaming_Service.Views.Video
-{
-    public class Details
-    {
-    }
+﻿@model Video_Content_Streaming_Service.ViewModels.VideoViewModel
+
+@{
+    ViewData["Title"] = Model.Title;
 }
+
+<div class="container-fluid px-5 mt-4">
+    <div class="row">
+        <!-- Main Player Column -->
+        <div class="col-lg-8">
+            <div class="ratio ratio-16x9 shadow-lg rounded bg-black">
+                <video controls autoplay class="rounded">
+                    <source src="@Model.VideoUrl" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <div class="mt-4 p-3 rounded bg-dark border border-secondary border-opacity-25">
+                <h2 class="text-white fw-bold">@Model.Title</h2>
+                <div class="d-flex align-items-center mb-3">
+                    <div class="rounded-circle bg-danger d-flex align-items-center justify-content-center me-2" style="width: 40px; height: 40px;">
+                        <span class="fw-bold">@Model.UploaderName[0].ToString().ToUpper()</span>
+                    </div>
+                    <div>
+                        <p class="mb-0 fw-bold">@Model.UploaderName</p>
+                        <small class="text-muted">Published on @Model.UploadDate.ToString("MMM dd, yyyy")</small>
+                    </div>
+                </div>
+                <hr class="border-secondary">
+                <p class="lead">@Model.Description</p>
+            </div>
+        </div>
+
+        <!-- Sidebar (Suggested Content) -->
+        <div class="col-lg-4">
+            <h5 class="text-white mb-3">Up Next</h5>
+            <div class="list-group list-group-flush bg-dark rounded border border-secondary border-opacity-25">
+                <div class="p-3 text-center text-muted">
+                    <i class="bi bi- film display-6 mb-2"></i>
+                    <p>More videos coming soon!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

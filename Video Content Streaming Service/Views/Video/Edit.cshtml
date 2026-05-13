@@ -1,6 +1,35 @@
-﻿namespace Video_Content_Streaming_Service.Views.Video
-{
-    public class Edit
-    {
-    }
-}
+﻿@model Video_Content_Streaming_Service.ViewModels.VideoViewModel
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg bg-dark text-white border-secondary">
+                <div class="card-header border-secondary py-3">
+                    <h4 class="mb-0"><i class="bi bi-pencil-square me-2"></i>Edit Video Details</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit">
+                        <input type="hidden" asp-for="VideoId" />
+
+                        <div class="mb-3">
+                            <label asp-for="Title" class="form-label text-muted small text-uppercase fw-bold"></label>
+                            <input asp-for="Title" class="form-control bg-black text-white border-secondary" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="Description" class="form-label text-muted small text-uppercase fw-bold"></label>
+                            <textarea asp-for="Description" class="form-control bg-black text-white border-secondary" rows="4"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-danger fw-bold py-2">SAVE CHANGES</button>
+                            <a asp-action="Index" class="btn btn-outline-secondary">CANCEL</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

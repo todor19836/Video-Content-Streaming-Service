@@ -1,6 +1,29 @@
-﻿namespace Video_Content_Streaming_Service.Views.Video
-{
-    public class Index
-    {
-    }
-}
+﻿@model IEnumerable<Video_Content_Streaming_Service.ViewModels.VideoViewModel>
+
+<div class="container-fluid px-5 mt-4">
+    <h2 class="mb-4 fw-bold text-white">Trending Now</h2>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <a asp-action="Details" asp-route-id="@item.VideoId" class="text-decoration-none">
+                    <div class="card h-100 shadow-lg">
+                        <div class="ratio ratio-16x9 bg-dark position-relative overflow-hidden rounded-top">
+                            <div class="d-flex align-items-center justify-content-center h-100">
+                                <i class="bi bi-play-fill text-white display-3 opacity-50"></i>
+                            </div>
+                        </div>
+                        <div class="card-body p-3">
+                            <h6 class="card-title text-white mb-1 text-truncate">@item.Title</h6>
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                <span class="badge bg-secondary text-uppercase" style="font-size: 0.6rem;">HD</span>
+                                <small class="text-muted">@item.UploaderName</small>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>

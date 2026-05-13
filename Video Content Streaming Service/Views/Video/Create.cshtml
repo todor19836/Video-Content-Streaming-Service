@@ -1,6 +1,51 @@
-﻿namespace Video_Content_Streaming_Service.Views.Video
-{
-    public class Create
-    {
+﻿@model Video_Content_Streaming_Service.ViewModels.CreateVideoViewModel
+
+@{
+    ViewData["Title"] = "Upload Video";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Upload New Video</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="Title" class="form-label"></label>
+                            <input asp-for="Title" class="form-control" placeholder="Enter video title" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label"></label>
+                            <textarea asp-for="Description" class="form-control" rows="3" placeholder="What is this video about?"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="VideoFile" class="form-label">Select Video File (.mp4 only)</label>
+                            <input asp-for="VideoFile" type="file" class="form-control" accept="video/mp4" />
+                            <span asp-validation-for="VideoFile" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success">Upload Now</button>
+                            <a asp-action="Index" class="btn btn-secondary">Back to Gallery</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
